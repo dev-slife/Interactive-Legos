@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Legos</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Interactive Legos</title>
+	<link rel="stylesheet" href="styles.css" />
+	<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+	<script src="app.js"></script>
 </head>
 <body>
-    <h1>Interactive Legos</h1>
+	<main class="container">
+		<section class="hero">
+			<h1>Interactive Legos</h1>
+			<p>
+				Explore Architecture LEGO sets through a data story built from Rebrickable.
+				Start with the overall part counts, move through color patterns across sets,
+				and finish with a detailed view of the parts that make each set unique.
+			</p>
+		</section>
+		
+		<section class="panel">
+			<h2>1. Part counts across sets</h2>
+			<p class="subtext">
+				Use the filters to narrow part counts by color, set, or part type. The chart below combines the selected Architecture sets and updates instantly.
+			</p>
+			
+			<div class="controls">
+				<div class="control">
+					<label for="setFilter">Set</label>
+					<select id="setFilter">
+						<option value="all">All sets</option>
+					</select>
+				</div>
+				<div class="control">
+					<label for="colorFilter">Color</label>
+					<select id="colorFilter">
+						<option value="all">All colors</option>
+					</select>
+				</div>
+				<div class="control">
+					<label for="partTypeFilter">Part type</label>
+					<select id="partTypeFilter">
+						<option value="all">All part types</option>
+					</select>
+				</div>
+			</div>
+			
+			<div id="barChart" class="chart"></div>
+		</section>
+		
+		<section class="panel">
+			<h2>2. Heatmap by color</h2>
+			<p class="subtext">
+				Hover over a cell to see the exact value. The hovered row and column are emphasized so users can trace the part count to its color and set.
+			</p>
+			
+			<div class="heatmap-wrap">
+				<div id="heatmap" class="chart heatmap"></div>
+				<div class="legend-card">
+					<h3>Color scale</h3>
+					<div class="legend-item"><span class="swatch s1"></span>0–2 parts</div>
+					<div class="legend-item"><span class="swatch s2"></span>3–5 parts</div>
+					<div class="legend-item"><span class="swatch s3"></span>6–9 parts</div>
+					<div class="legend-item"><span class="swatch s4"></span>10–14 parts</div>
+					<div class="legend-item"><span class="swatch s5"></span>15+ parts</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="panel">
+			<h2>3. Set details</h2>
+			<p class="subtext">
+				Choose a set to inspect its parts in detail. This table shows the part name, color, quantity, and any other metadata you choose to include from Rebrickable.
+			</p>
+			
+			<div class="detail-grid">
+				<div id="setList" class="set-list"></div>
+				<div class="details">
+					<div class="details-header">
+						<div>
+							<strong id="detailsTitle">Select a set</strong>
+							<div id="detailsMeta" class="muted"></div>
+						</div>
+						<span class="badge" id="detailsBadge">0 parts</span>
+					</div>
+					<div class="details-body">
+						<table>
+							<thead>
+								<tr>
+									<th>Part name</th>
+									<th>Color</th>
+									<th>Count</th>
+									<th>Part type</th>
+								</tr>
+							</thead>
+							<tbody id="detailsTable"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 </body>
 </html>
