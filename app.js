@@ -1,6 +1,6 @@
 // ----------------------------------- CONSTANTS ----------------------------------- //
 
-const dataDir = "./.private/data/clean";
+const dataDir = "./data";
 
 
 
