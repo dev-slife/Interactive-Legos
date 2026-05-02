@@ -148,7 +148,8 @@ select:focus, input[type="search"]:focus {
 .s2 { background: #91c5e8; }
 .s3 { background: #4a90d6; }
 .s4 { background: #7c4dcc; }
-.s5 { background: #e45757; }
+.s5 { background: #da4ec7; }
+.s6 { background: #e45757; }
 
 .detail-grid {
     display: grid;

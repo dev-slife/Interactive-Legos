@@ -22,7 +22,7 @@
 		<section class="panel">
 			<h2>1. Part counts across sets</h2>
 			<p class="subtext">
-				Use the filters to narrow part counts by color, set, or part type. The chart below combines the selected Architecture sets and updates instantly.
+				Use the filters to narrow part counts by color, set, or part type.
 			</p>
 			
 			<div class="controls">
@@ -52,18 +52,19 @@
 		<section class="panel">
 			<h2>2. Heatmap by color</h2>
 			<p class="subtext">
-				Hover over a cell to see the exact value. The hovered row and column are emphasized so users can trace the part count to its color and set.
+				Hover over a cell to see the part count for a specific color in a selected set.
 			</p>
 			
 			<div class="heatmap-wrap">
 				<div id="heatmap" class="chart heatmap"></div>
 				<div class="legend-card">
 					<h3>Color scale</h3>
-					<div class="legend-item"><span class="swatch s1"></span>0–2 parts</div>
-					<div class="legend-item"><span class="swatch s2"></span>3–5 parts</div>
-					<div class="legend-item"><span class="swatch s3"></span>6–9 parts</div>
-					<div class="legend-item"><span class="swatch s4"></span>10–14 parts</div>
-					<div class="legend-item"><span class="swatch s5"></span>15+ parts</div>
+					<div class="legend-item"><span class="swatch s1"></span>0 - 125 parts</div>
+					<div class="legend-item"><span class="swatch s2"></span>125 - 250 parts</div>
+					<div class="legend-item"><span class="swatch s3"></span>250 - 625 parts</div>
+					<div class="legend-item"><span class="swatch s4"></span>625 - 1,500 parts</div>
+					<div class="legend-item"><span class="swatch s5"></span>1,500 - 2,500 parts</div>
+					<div class="legend-item"><span class="swatch s6"></span>> 2,500 parts</div>
 				</div>
 			</div>
 		</section>
@@ -71,7 +72,7 @@
 		<section class="panel">
 			<h2>3. Set details</h2>
 			<p class="subtext">
-				Choose a set to inspect its parts in detail. This table shows the part name, color, quantity, and any other metadata you choose to include from Rebrickable.
+				Choose a set to inspect in detail. This table shows the set name, image, and each part that's included.
 			</p>
 			
 			<div class="detail-grid">
