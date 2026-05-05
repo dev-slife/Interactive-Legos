@@ -317,7 +317,7 @@ async function renderPage() {
             <div>
                 <img src="${set.set_img}" alt="${set.set_name}" class="main-set-img">
                 <h3>${set.set_name}</h3>
-                <p class="muted">${set.set_num} • ${set.year}</p>
+                <p class="muted">${set.set_num} | ${set.year}</p>
                 <span class="badge">${set.parts.reduce((sum, p) => sum + p.count, 0)} total parts</span>
             </div>
             
@@ -361,4 +361,47 @@ document.addEventListener("DOMContentLoaded", async() => {
     render.renderHeatmap();
     render.renderSetList();
     render.renderDetails();
+
+    const sections = document.querySelectorAll('.hero, .panel');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Reset state first
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'none';
+                entry.target.classList.add('is-visible');
+                
+                // Reset children animations
+                const children = entry.target.querySelectorAll('h2, .subtext, .controls, .chart, .heatmap-wrap, .detail-grid, .details');
+                children.forEach(child => {
+                    child.classList.remove('animate');
+                    child.style.transitionDelay = '0ms'; // Reset delay
+                });
+                
+                // Stagger children AFTER reset
+                setTimeout(() => {
+                    children.forEach((child, i) => {
+                        child.style.transitionDelay = `${i * 80}ms`;
+                        child.classList.add('animate');
+                    });
+                }, 50);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach((section, index) => {
+        // Pre-apply hero
+        if (index === 0) {
+            section.classList.add('is-visible');
+            section.style.opacity = '1';
+            section.style.transform = 'none';
+        } else {
+            observer.observe(section);
+        }
+    });
 });
