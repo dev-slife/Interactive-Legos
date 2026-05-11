@@ -1,3 +1,5 @@
+/* --------------------------- VARS --------------------------- */
+
 :root {
     --bg: #f7f8fb;
     --panel: #ffffff;
@@ -9,19 +11,26 @@
     --shadow-lg: 0 25px 60px rgba(15, 23, 42, 0.15);
     --radius: 24px;
     
-    /* Story scroll vars */
     --story-height: 100vh;
     --reveal-y: 60px;
     --reveal-duration: 1200ms;
     --reveal-ease: cubic-bezier(0.22, 0.58, 0.12, 0.98);
 }
 
-/* Base */
-* { box-sizing: border-box; margin: 0; }
+
+
+/* --------------------------- BASE --------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 html { 
     scroll-behavior: smooth; 
-    scroll-snap-type: y proximity; 
+    scroll-snap-type: y mandatory; 
 }
+
 body { 
     font-family: Inter, Arial, Helvetica, sans-serif; 
     color: var(--text);
@@ -29,7 +38,10 @@ body {
     overflow-x: hidden;
 }
 
-/* STORY SECTIONS */
+
+
+/* --------------------------- STORY SECTIONS --------------------------- */
+
 .container {
     width: 100%;
 }
@@ -41,7 +53,8 @@ body {
     scroll-snap-align: start;
 }
 
-/* HERO - FULLSCREEN */
+
+/* --------------------------- HERO --------------------------- */
 .hero {
     height: var(--story-height);
     display: flex;
@@ -55,10 +68,37 @@ body {
     backdrop-filter: blur(30px);
 }
 
+.title {
+    background-image: url("https://www.lostandfoundrx.com/wp-content/uploads/2022/08/Recreation.Toys_.Legos_.Colors.Pile_-scaled-1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.title_overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(6, 12, 22, 0.4), rgba(6, 12, 22, 0.6)),
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 60%);
+}
+
+.title h1 {
+    background: linear-gradient(135deg, #ffffff, #ffffff) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+}
+
+.title p {
+    color: var(--bg) !important;
+}
+
 .hero h1 {
     font-size: clamp(4rem, 10vw, 8rem);
     font-weight: 800;
-    line-height: 1.15;  /* More breathing room */
+    line-height: 1.15;
     letter-spacing: -0.03em;
     margin: 0 0 2rem 0;
 
@@ -67,9 +107,8 @@ body {
     -webkit-background-clip: text;
     color: transparent;
     
-    /* Prevent clipping */
     -webkit-text-fill-color: transparent;
-    padding: 0.5rem 0;  /* Breathing room */
+    padding: 0.5rem 0;
     display: block;
     max-height: none;
 }
@@ -82,7 +121,10 @@ body {
     margin: 0;
 }
 
-/* PANELS */
+
+
+/* --------------------------- PANELS --------------------------- */
+
 .panel {
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(20px);
@@ -110,7 +152,9 @@ body {
     line-height: 1.6;
 }
 
-/* SCROLL REVEAL ANIMATION */
+
+
+/* --------------------------- REVEAL ANIMATION --------------------------- */
 .hero,
 .panel,
 .panel > * {
@@ -128,7 +172,6 @@ body {
     transform: translateY(0);
 }
 
-/* HERO STAGGER */
 .hero.is-visible h1 {
     animation: fadeUp 1.2s var(--reveal-ease) 0.2s both;
 }
@@ -137,25 +180,16 @@ body {
     animation: fadeUp 1.2s var(--reveal-ease) 0.6s both;
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Panel stagger (slower) */
 .panel.is-visible h2 { animation-delay: 0.3s; }
 .panel.is-visible .subtext { animation-delay: 0.6s; }
 .panel.is-visible .controls,
 .panel.is-visible .chart,
 .panel.is-visible .detail-grid { animation-delay: 0.9s; }
 
-/* CONTROLS */
+
+
+/* --------------------------- CONTROLS --------------------------- */
+
 .controls {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -192,7 +226,10 @@ select:focus {
     transform: translateY(-2px);
 }
 
-/* CHARTS */
+
+
+/* --------------------------- CHARTS --------------------------- */
+
 .chart {
     width: 100%;
     height: 55vh;
@@ -203,7 +240,6 @@ select:focus {
     overflow: hidden;
 }
 
-/* HEATMAP */
 .heatmap-wrap {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -247,7 +283,6 @@ select:focus {
 .s5 { background: #da4ec7; }
 .s6 { background: #e45757; }
 
-/* DETAIL GRID - SET LIST + DETAILS */
 .detail-grid {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -298,7 +333,6 @@ select:focus {
     font-size: 0.85rem;
 }
 
-/* DETAILS PANEL WITH IMAGE + TABLE */
 .details {
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -319,7 +353,6 @@ select:focus {
     gap: 1rem;
     flex-shrink: 0;
 }
-
 
 .set-detail-main {
     display: grid !important;
@@ -387,7 +420,7 @@ th {
     font-weight: 600;
 }
 
-th:nth-child(1), td:nth-child(1) { width: 60px; }     /* Part img */
+th:nth-child(1), td:nth-child(1) { width: 60px; }    /* Part img */
 th:nth-child(2), td:nth-child(2) { width: 50%; }     /* Name */
 th:nth-child(3), td:nth-child(3) { width: 18%; }     /* Color */
 th:nth-child(4), td:nth-child(4) { width: 12%; }     /* Count */
@@ -417,7 +450,38 @@ th:nth-child(4), td:nth-child(4) { width: 12%; }     /* Count */
     font-size: 0.9rem;
 }
 
-/* RESPONSIVE */
+/* Table always visisble */
+.details,
+.details table,
+.details tbody,
+.details tr,
+.details td,
+.part-row-img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+
+
+/* --------------------------- KEYFRAME ANIMATIONS --------------------------- */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+
+/* --------------------------- RESPONSIVE --------------------------- */
+
 @media (max-width: 1100px) {
     .heatmap-wrap,
     .detail-grid {
@@ -442,20 +506,10 @@ th:nth-child(4), td:nth-child(4) { width: 12%; }     /* Count */
     }
 }
 
-/* TABLE ALWAYS VISIBLE */
-.details,
-.details table,
-.details tbody,
-.details tr,
-.details td,
-.part-row-img {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    transition: none !important;
-}
 
-/* Reduced motion */
+
+/* --------------------------- REDUCED MOTION --------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
     .hero, .panel, .hero.is-visible, .panel.is-visible {
         opacity: 1 !important;
